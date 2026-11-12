@@ -124,14 +124,21 @@ function AuthScreen() {
     setBusy(true);
     setError("");
     try {
-      mode === "login"
-        ? await signInWithEmailAndPassword(auth, email, password)
-        : await createUserWithEmailAndPassword(auth, email, password);
+      signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
       setError(err.message);
     } finally {
       setBusy(false);
     }
+    // try {
+    //   mode === "login"
+    //     ? await signInWithEmailAndPassword(auth, email, password)
+    //     : await createUserWithEmailAndPassword(auth, email, password);
+    // } catch (err) {
+    //   setError(err.message);
+    // } finally {
+    //   setBusy(false);
+    // }
   }
   return (
     <div className="auth-wrap">
@@ -168,14 +175,15 @@ function AuthScreen() {
               : "Ro‘yxatdan o‘tish"}
           </button>
         </form>
-        <button
+
+        {/* <button
           className="text-btn"
           onClick={() => setMode(mode === "login" ? "signup" : "login")}
         >
           {mode === "login"
             ? "Hisobingiz yo‘qmi? Ro‘yxatdan o‘ting"
             : "Hisobingiz bormi? Kirish"}
-        </button>
+        </button> */}
         <p className="tiny muted">
           Kirish ma’lumotlarini tashkilot administratori beradi.
         </p>
